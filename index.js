@@ -109,16 +109,20 @@ async function main(){
     /*update*/
 
     app.put("/disease_symptoms/:id", async (req, res)=>{
-        let {disease, symptom} = req.body;
-        symptom = symptom.split(",").map(el=>el.trim());
+        
+        // let {disease, symptom} = req.body;
+        let disease = req.body.disease;
+        let symptom = req.body.disease.split(",").map(el=>el.trim());
         // console.log(disease, symptom)
+        datetime = new Date();
 
         await getDB().collection(COLLECTION_NAME).updateOne({
             "_id": ObjectId(req.params.id)
         },{
             "$set":{
                 disease,
-                symptom
+                symptom,
+                datetime
             }
         })
 
