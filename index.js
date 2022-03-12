@@ -112,7 +112,9 @@ async function main() {
 
         try {
             // let {disease, symptom} = req.body;
+            // console.log(req.body);
             let disease = req.body.disease;
+            // console.log("symptom",req.body.symptom);
             let symptom = req.body.symptom.split(",").map(el => el.trim());
             // console.log(disease, symptom)
             datetime = new Date();
@@ -156,7 +158,7 @@ async function main() {
 
 main();
 
-//3. listen
+//3. listen process.env.PORT
 app.listen(process.env.PORT, () => {
     console.log("server has started")
 })
